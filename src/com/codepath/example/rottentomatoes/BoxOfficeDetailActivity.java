@@ -38,9 +38,8 @@ public class BoxOfficeDetailActivity extends Activity {
 	// Populate the data for the movie
 	@SuppressLint("NewApi")
 	public void loadMovie(BoxOfficeMovie movie) {
-		if (android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.HONEYCOMB) {
-		    getActionBar().setTitle(movie.getTitle());
-		}
+		getActionBar().setTitle(movie.getTitle());
+
 		// Populate data
 		tvTitle.setText(movie.getTitle());
 		tvCriticsScore.setText(Html.fromHtml("<b>Critics Score:</b> " + movie.getCriticsScore() + "%"));
