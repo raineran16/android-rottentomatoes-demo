@@ -1,6 +1,5 @@
 package com.codepath.example.rottentomatoes;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
@@ -23,22 +22,25 @@ public class BoxOfficeDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_box_office_detail);
 		// Fetch views
-		ivPosterImage = (ImageView) findViewById(R.id.ivPosterImage);
-		tvTitle = (TextView) findViewById(R.id.tvTitle);
-		tvSynopsis = (TextView) findViewById(R.id.tvSynopsis);
-		tvCast = (TextView) findViewById(R.id.tvCast);
-		tvCriticsConsensus = (TextView) findViewById(R.id.tvCriticsConsensus);
-		tvAudienceScore =  (TextView) findViewById(R.id.tvAudienceScore);
-		tvCriticsScore = (TextView) findViewById(R.id.tvCriticsScore);
+		ivPosterImage = findViewById(R.id.ivPosterImage);
+		tvTitle = findViewById(R.id.tvTitle);
+		tvSynopsis = findViewById(R.id.tvSynopsis);
+		tvCast = findViewById(R.id.tvCast);
+		tvCriticsConsensus = findViewById(R.id.tvCriticsConsensus);
+		tvAudienceScore =  findViewById(R.id.tvAudienceScore);
+		tvCriticsScore = findViewById(R.id.tvCriticsScore);
 		// Load movie data
 		BoxOfficeMovie movie = (BoxOfficeMovie) getIntent().getSerializableExtra(BoxOfficeActivity.MOVIE_DETAIL_KEY);
 		loadMovie(movie);
 	}
 	
 	// Populate the data for the movie
-	@SuppressLint("NewApi")
 	public void loadMovie(BoxOfficeMovie movie) {
-		getActionBar().setTitle(movie.getTitle());
+		String title = "unknown";
+		if(movie.getTitle() != null) {
+			title = movie.getTitle();
+		}
+		getActionBar().setTitle(title);
 
 		// Populate data
 		tvTitle.setText(movie.getTitle());
